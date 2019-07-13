@@ -1,6 +1,6 @@
-class CLI
+class FirstCliProject::CLI
 
-  def run
+  def call
     puts "Welcome to the NYT Best Seller Selector!"
   end
   

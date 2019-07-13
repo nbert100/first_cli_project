@@ -2,5 +2,4 @@
 
 require_relative '../lib/environment'
 
-app = CLI.new
-app.run
+FirstCliProject::CLI.new.call
