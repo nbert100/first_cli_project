@@ -1,4 +1,4 @@
-class Book
+class FirstCliProject::Book
   @@all = []
 
    attr_accessor :title, :author, :weeks, :publisher
@@ -6,12 +6,19 @@ class Book
   def self.all
     @@all
   end
+  
+  def self.new_from_index_page(book)
+    self.new(
+      book.css('.css-5pe77f').text,
+      book.css('.css-1j7a9fx').text.gsub(/"by"/, ""),
+      book.css('.css-1o26r9v').text)
+  end
 
-  def initialize(title=nil, author=nil, weeks=nil, publisher=nil)
+  def initialize(title=nil, author=nil, weeks=nil)
     @title = title
     @author = author
     @weeks = weeks
-    @publisher = publisher
+    
     @@all << self
   end
 
