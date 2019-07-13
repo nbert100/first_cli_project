@@ -1,7 +1,7 @@
 class FirstCliProject::Book
   @@all = []
 
-   attr_accessor :title, :author, :weeks, :publisher
+   attr_accessor :title, :author, :weeks, :pages, :price, :blurb
 
   def self.all
     @@all

@@ -3,7 +3,7 @@ require 'open-uri'
 require 'pry'
 
 class FirstCliProject::Scraper
-    main_url = 'https://www.nytimes.com/books/best-sellers/combined-print-and-e-book-fiction'
+    main_url = 'https://www.nytimes.com/books/best-sellers/hardcover-fiction'
   
   def scrape_main_page(main_url)
     page = Nokogiri::HTML(open(main_url))
@@ -21,7 +21,6 @@ class FirstCliProject::Scraper
     # weeks_on = book.css('.css-1o26r9v').text
     # publisher = book.css('.css-heg334').text
      
-     #link = book.css('.css-79elbk').class? .css-6mwynb -> .css-wq7ea0 -> href
     end
     book_hash = {:title => title, :author => author, :weeks_on => weeks_on, :publisher => publisher}
     books << book_hash
