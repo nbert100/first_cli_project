@@ -1,6 +1,7 @@
-class CLI 
-  def run 
-    puts "the cli is running"
-  end
-end
+class CLI
 
+  def run
+    puts "Welcome to the NYT Best Seller Selector!"
+  end
+  
+end
