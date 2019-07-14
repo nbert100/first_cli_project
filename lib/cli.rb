@@ -23,11 +23,11 @@ class CLI
         
       
       end
-    Scraper.scrape_main_page
+    Scraper.scrape_page
   end
   
   def list_books
-    Scraper.scrape_main_page
+    Scraper.scrape_page
     Book.all.collect {|book| puts "#{book.title} by #{book.author}"}
     puts ""
     puts "To learn more about a particular book, please enter book title."
