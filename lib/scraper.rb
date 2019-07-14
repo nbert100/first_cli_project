@@ -4,16 +4,14 @@ require 'pry'
 
 class Scraper
   
-  
-  def self.scrape_main_page
+  def self.get_page
     main_url = 'https://www.nytimes.com/books/best-sellers/hardcover-fiction'
     page = Nokogiri::HTML(open(main_url))
     
-    #books = []
-    
-    
-    
-    book_container = page.css('.css-12yzwg4')
+  end
+  
+  def self.scrape_main_page
+    book_container = self.get_page.css('.css-12yzwg4')
     book_list = book_container.css('div.css-xe4cfy')
     
     book_list.each do |book| 
@@ -28,18 +26,15 @@ class Scraper
       Book.new(attributes)
       
     end
+    
   end  
     
-  #   book_hash = {:title => title, :author => author, :weeks_on => weeks_on, :publisher => publisher}
-  #   books << book_hash
-  # end
-  
-  
-  def self.scrape_book_details
+    #level two scrape
     
-    bn_url = page.css('.css-wq7ea0').attribute('href').text
-    detail_page = Nokogiri::HTML(open(bn_url))
-    
+ def scrape_book_details(bn_link)
+    book_page = Nokogiri::HTML(open(bn_link))
+   bn_link = get_page.css('.css-wq7ea0').attribute('href').text
+    #book_detail = book_page.css('main.bg-whole-site-color.pt-s')
     
   end
   
