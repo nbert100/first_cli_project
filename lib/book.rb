@@ -1,4 +1,4 @@
-class FirstCliProject::Book
+class Book
   @@all = []
 
    attr_accessor :title, :author, :weeks, :pages, :price, :blurb

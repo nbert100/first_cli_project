@@ -1,4 +1,4 @@
-class FirstCliProject::CLI
+class CLI
 
   def call
     puts "Welcome to the NYT Best Seller Selector!"
@@ -7,7 +7,7 @@ class FirstCliProject::CLI
     puts "Current best sellers:"
     list_books
     puts "Want to learn more about a specific book? Please enter name of book or 'exit' to exit selector"
-    
+    Scraper.scrape_main_page
   end
   
   def list_books
