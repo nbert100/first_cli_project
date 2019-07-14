@@ -6,9 +6,10 @@ class CLI
     input = ""
     puts "Welcome to the NYT Best Seller Selector!"
     puts "For a list of current best sellers, enter 'list'."
+    puts "To see if your favorite book is on the Best Seller list, enter 'search by title'."
+    puts "To see if your favorite author has a book on the Best Seller list, enter 'search by author'."
     puts "To exit the selector, enter 'exit'."
-    #ask if user wants to see list of books 
-    #if yes
+    
     
     input = gets.strip
   
@@ -26,7 +27,11 @@ class CLI
   end
   
   def list_books
+    Scraper.scrape_main_page
     Book.all.collect {|book| puts "#{book.title} by #{book.author}"}
+    puts ""
+    puts "To learn more about a particular book, please enter book title."
+    
   end
   
   def book_info
@@ -34,6 +39,7 @@ class CLI
   end
   
   def book_detail
+    
     #2nd level scrape info (price, overview, number of pages)
   end
   

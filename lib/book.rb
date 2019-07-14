@@ -1,7 +1,7 @@
 class Book
   @@all = []
 
-   attr_accessor :title, :author, :weeks_on, :pages, :price, :blurb, :publisher
+   attr_accessor :title, :author, :weeks_on, :pages, :price, :blurb, :publisher, :bn_link
 
   def self.all
     @@all
