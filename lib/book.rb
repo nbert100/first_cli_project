@@ -15,8 +15,8 @@ class Book
   # end
 
   def initialize(attributes)
-    attributes.each do |key, value|
-      self.send("#{key.to_s}=", value)
+    attributes.each do |key, v|
+      self.send("#{key.to_s}=", v)
     end
     
     # @title = title
