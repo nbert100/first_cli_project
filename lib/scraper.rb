@@ -30,8 +30,8 @@ class Scraper
           
           book_doc.each do |info| 
             more_info = {
-              pages: info.css('.ibc-pub-info')[0].text.strip.split(",").pop
-              price: info.css('span#list-price-price').text.gsub("*","")
+              pages: info.css('.ibc-pub-info')[0].text.strip.split(",").pop,
+              price: info.css('span#list-price-price').text.gsub("*",""),
               release_date: info.css('p.ibc-pub-info')[1].text.split(": ").pop
             }
           end

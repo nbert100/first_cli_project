@@ -14,17 +14,17 @@ class Book
   #       publisher: b.css('.css-heg334').text,)
   # end
 
-  def initialize(attributes)
+  def initialize(attributes, more_info = nil)
     attributes.each do |key, v|
       self.send("#{key.to_s}=", v)
     end
   
   
-  # def book_details(more_info)
-  #   more_info.each do |key, value|
-  #     self.send("#{key.to_s}=", v)
-  #   end
-  # end
+  def book_details(more_info)
+    more_info.each do |key, value|
+      self.send("#{key.to_s}=", v)
+    end
+  end
     
     # @title = title
     # @author = author
