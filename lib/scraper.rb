@@ -17,13 +17,14 @@ class Scraper
     book_list = book_container.css('div.css-xe4cfy')
     
     book_list.each do |book| 
-      title = book.css('.css-5pe77f').text
-      author = book.css('.css-1j7a9fx').text.gsub("by ", "")
-      weeks_on = book.css('.css-1o26r9v').text
-      publisher = book.css('.css-heg334').text
-      
-      Book.new(title, author, weeks_on, publisher)
-      # binding.pry
+     attributes = { 
+      title: book.css('.css-5pe77f').text,
+      author: book.css('.css-1j7a9fx').text.gsub("by ", ""),
+      weeks_on: book.css('.css-1o26r9v').text,
+      publisher: book.css('.css-heg334').text
+     }
+      Book.new(attributes)
+      #binding.pry
     end
   end  
     

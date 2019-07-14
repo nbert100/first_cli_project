@@ -1,17 +1,32 @@
+require 'pry'
 class CLI
 
   def call
+    input = ""
     puts "Welcome to the NYT Best Seller Selector!"
+    puts "For a list of current best sellers, enter 'list'."
+    puts "To exit the selector, enter 'exit'."
     #ask if user wants to see list of books 
     #if yes
-    puts "Current best sellers:"
-    list_books
-    puts "Want to learn more about a specific book? Please enter name of book or 'exit' to exit selector"
+    
+    input = gets.strip
+  
+     case input
+      when 'list'
+        self.list_books
+      when 'exit'
+        self.leave_selector
+      else
+        "Please enter valid command."
+      end
+    
+    
     Scraper.scrape_main_page
+    # binding.pry
   end
   
   def list_books
-    #shows list of titles and authors of books on best seller list
+    Book.all
   end
   
   def book_info
@@ -23,7 +38,6 @@ class CLI
   end
   
   def leave_selector
-    #if user input = 'exit'
-    #puts "Thank you for using NYT Selector"
+    puts "Thank you for using NYT Selector. Goodbye!"
   end
 end

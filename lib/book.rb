@@ -14,11 +14,15 @@ class Book
   #     book.css('.css-1o26r9v').text)
   # end
 
-  def initialize(title, author, weeks_on, publisher)
-    @title = title
-    @author = author
-    @weeks_on = weeks_on
-    @publisher = publisher
+  def initialize(attributes)
+    attributes.each do |key, value|
+      self.send("#{key.to_s}=", value)
+    end
+    
+    # @title = title
+    # @author = author
+    # @weeks_on = weeks_on
+    # @publisher = publisher
     
     @@all << self
   end
