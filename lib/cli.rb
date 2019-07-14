@@ -1,4 +1,5 @@
 require 'pry'
+
 class CLI
 
   def call
@@ -17,16 +18,15 @@ class CLI
       when 'exit'
         self.leave_selector
       else
-        "Please enter valid command."
+        puts "Please enter valid command."
+        
+      
       end
-    
-    
     Scraper.scrape_main_page
-    # binding.pry
   end
   
   def list_books
-    Book.all
+    Book.all.collect {|book| puts "#{book.title} by #{book.author}"}
   end
   
   def book_info
