@@ -1,23 +1,24 @@
 class Book
   @@all = []
 
-   attr_accessor :title, :author, :weeks, :pages, :price, :blurb
+   attr_accessor :title, :author, :weeks_on, :pages, :price, :blurb, :publisher
 
   def self.all
     @@all
   end
   
-  def self.new_from_index_page(book)
-    self.new(
-      book.css('.css-5pe77f').text,
-      book.css('.css-1j7a9fx').text.gsub(/"by"/, ""),
-      book.css('.css-1o26r9v').text)
-  end
+  # def self.new_from_index_page(book)
+  #   self.new(
+  #     book.css('.css-5pe77f').text,
+  #     book.css('.css-1j7a9fx').text.gsub("by", ""),
+  #     book.css('.css-1o26r9v').text)
+  # end
 
-  def initialize(title=nil, author=nil, weeks=nil)
+  def initialize(title, author, weeks_on, publisher)
     @title = title
     @author = author
-    @weeks = weeks
+    @weeks_on = weeks_on
+    @publisher = publisher
     
     @@all << self
   end
