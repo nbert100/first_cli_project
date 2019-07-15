@@ -1,31 +1,27 @@
 class Book
   @@all = []
 
-   attr_accessor :title, :author, :weeks_on, :pages, :price, :publisher, :book_link, :release_date
-
+attr_accessor :title, :author, :weeks_on, :publisher, :book_link
+  
   def self.all
     @@all
   end
   
-  # def self.new_from_scrape_page(b)
-  #   self.new(title: b.css('.css-5pe77f').text,
-  #       author: b.css('.css-1j7a9fx').text.gsub("by ", ""),
-  #       weeks_on: b.css('.css-1o26r9v').text,
-  #       publisher: b.css('.css-heg334').text,)
-  # end
-
-  def initialize(attributes, more_info = nil)
+  
+  def initialize(attributes)
     attributes.each do |key, v|
       self.send("#{key.to_s}=", v)
-    end
-  
-  
-  def book_details(more_info)
-    more_info.each do |key, value|
-      self.send("#{key.to_s}=", v)
-    end
   end
-    
+  
+  def find_by_title(title)
+      self.all.find {|book| book.title == title}
+  end
+ 
+  def find_by_author(author)
+      self.all.find {|book| book.author == author}
+  end  
+  
+  
     # @title = title
     # @author = author
     # @weeks_on = weeks_on
@@ -59,3 +55,14 @@ class Book
 
   end
 end
+
+
+
+#if i only had a second level scrape 
+# attr_accessor :price, :release_date, :pages
+
+ # def book_details(more_info)
+  #   more_info.each do |key, value|
+  #     self.send("#{key.to_s}=", v)
+  #   end
+  # end
