@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Nia Bert'"]
   spec.email         = ["'nbert14@gmail.com'"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{This gem is designed to give users different ways of looking at the NYT best seller list.}
+  spec.description   = %q{This gem is designed to give users different ways of looking at the NYT best seller list.}
   spec.homepage      = "https://github.com/nbert100/first_cli_project"
   spec.license       = "MIT"
 
@@ -38,6 +38,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency 'pry'
+  spec.add_development_dependency "pry"
   spec.add_development_dependency 'nokogiri'
 end

@@ -13,8 +13,8 @@ attr_accessor :title, :author, :weeks_on, :publisher, :book_link
       self.send("#{key.to_s}=", v)
   end
   
-  def find_by_title(title)
-      self.all.find {|book| book.title == title}
+  def find_by_title(input)
+      self.all.find {|book| book.title == input}
   end
  
   def find_by_author(author)
@@ -30,9 +30,9 @@ attr_accessor :title, :author, :weeks_on, :publisher, :book_link
     @@all << self
   end
 
-  def self.find_by_title(title)
+  def self.find_by_title(input)
     self.all.find do |book| 
-      if book.title == title
+      if input == book.title
         return book_info
 
       else 
@@ -41,12 +41,12 @@ attr_accessor :title, :author, :weeks_on, :publisher, :book_link
     end
   end
       
-  def self.find_by_author(author)
+  def self.find_by_author(input)
    #returns a list of books by author
 
     self.all.find do |book| 
-      if book.author == author
-        return book_list
+      if book.author == input
+        return book_info
 
       else 
         return "Author not found."
