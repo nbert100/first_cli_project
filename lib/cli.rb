@@ -3,35 +3,20 @@ require 'pry'
 class CLI
 
   def call
-  Scraper.scrape_page
+    self.call_scraper
+    self.prints_options
+    self.prompt_for_input
+  end
+  
+  def prints_options
     puts "Welcome to the NYT Best Seller Selector!"
     puts "For a list of current best sellers, enter 'list'."
     puts "To see if your favorite book is on the list, enter 'title'."
     puts "To see if your favorite author has a book on the Best Seller list, enter 'author'."
     puts "To exit the selector, enter 'exit'."
-    
-    input = gets.strip
-  
-     case input
-      when 'list'
-        self.list_books
-        self.find_info_by_title
-      when 'exit'
-        self.leave_selector
-      when 'title'
-        Book.search_by_title
-      when 'author'
-        Book.find_by_author
-      else
-        self.invalid_input
-        
-      
-      end
-  
   end
   
   def list_books
-  
     Book.all.collect do |book| 
       
       puts ""
@@ -41,6 +26,28 @@ class CLI
     puts ""
     puts "To learn more about a particular book, please enter book title:"
     puts exit_message
+  end
+  
+  def prompt_for_input
+    input = gets.strip
+  
+    case input
+      when 'list'
+        self.list_books
+       # self.find_info_by_title
+      when 'exit'
+        self.leave_selector
+      when 'title'
+        Book.search_by_title
+      when 'author'
+        Book.find_by_author
+      else
+        self.invalid_input
+    end
+  end
+  
+  def call_scraper
+    Scraper.scrape_page
   end
   
   def find_info_by_title
