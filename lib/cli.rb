@@ -23,21 +23,24 @@ class CLI
       puts "#{book.title} by #{book.author}"
       
     end
+    # make new method
     puts ""
     puts "To learn more about a particular book, please enter book title:"
     puts exit_message
   end
   
   def prompt_for_input
-    input = gets.strip
+    input = gets.strip.downcase
   
     case input
       when 'list'
         self.list_books
-        self.find_info_by_title
+        # Book.find_by_title
+        # self.book_info
       when 'exit'
         self.leave_selector
       when 'title'
+        Book.find_by_title
         self.info_by_title
       when 'author'
         self.info_by_author
@@ -71,17 +74,17 @@ class CLI
     # input = gets.strip.downcase
     
     # Book.all.find_all do |book| if book.title == input
-
+      
           puts ""
           puts "#{selected_book.title} by #{selected_book.author}"
           puts "--------------------"
           puts "Weeks on NYT Best Seller List: #{selected_book.weeks_on}"
           puts "Publisher: #{selected_book.publisher}"
       
-        else 
-       puts "I couldn't find that title. Please try again."
-     end
-    end
+    #     else 
+    #   puts "I couldn't find that title. Please try again."
+    # end
+    # end
   end
 
   def info_by_author(input)
@@ -112,7 +115,7 @@ class CLI
   end
   
   def invalid_input
-    puts "Please try again."
+    puts "Invalid input. Please try again."
     puts ""
     self.call
   end

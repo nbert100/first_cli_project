@@ -14,10 +14,12 @@ attr_accessor :title, :author, :weeks_on, :publisher, :book_link
   end
   
   def find_by_title(input)
+    input = gets.strip.downcase
      selected_book = self.all.find {|book| book.title == input}
   end
  
   def find_by_author(input)
+    input = gets.strip.downcase
       selected_book = self.all.find {|book| book.author == author}
   end  
   
