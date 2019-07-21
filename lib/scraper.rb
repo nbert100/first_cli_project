@@ -1,6 +1,3 @@
-# require 'nokogiri'
-# require 'open-uri'
-# require 'pry'
 
 class Scraper
  
@@ -22,13 +19,8 @@ class Scraper
        
        attributes[:book_link] = book_list.css('.css-6mwynb').css("li")[1].css("a").attribute('href').value
        Book.new(attributes)
-       
       end
   end
-  
-    
-   
-    
 end      
        
        

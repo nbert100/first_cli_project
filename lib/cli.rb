@@ -8,14 +8,18 @@ class CLI
     # self.prompt_for_input
   end
   
+  def call_scraper
+    Scraper.scrape_page
+  end
+  
   def prints_options
     puts "Welcome to the New York Times Best Seller Selector!"
     puts "For a list of current best sellers, enter 'list'."
     puts "To see if your favorite book is on the list, enter 'title'."
     puts "To see if your favorite author has a book on the list, enter 'author'."
     puts "To exit the selector, enter 'exit'."
+    
     input = gets.strip.downcase
-  
     case input
       when 'list'
         self.list_books
@@ -24,7 +28,7 @@ class CLI
       when 'title'
         self.find_info_by_title
       when 'author'
-        
+        self.find_info_by_author
       else
         self.invalid_input
     end
@@ -40,7 +44,10 @@ class CLI
     end
     puts ""
     puts "To learn more about a particular book, please enter book title:"
+    
     puts exit_message
+    
+    
     
     # input = gets.strip.downcase
     # if input = Book.find_by_title(input)
@@ -50,36 +57,24 @@ class CLI
     # end
   end
   
-  # def more_info
-  #   puts "To learn more about a particular book, please enter book title:"
-  #   input = gets.strip.downcase
-  #   Book.find_info_by_title(input)
-  #   puts exit_message
+  
+  def find_info_by_title
     
-  # end
-  
- 
-  
-  # def call_scraper
-  #   Scraper.scrape_page
-  # end
-  
-  # def find_info_by_title
-  #   #Scraper.scrape_page
-  #     input = gets.strip.downcase 
-  #     selected_book = Book.find_by_title
-         
-  #         puts ""
-  #         puts "#{selected_book.title} by #{selected_book.author}"
-  #         puts "--------------------"
-  #         puts "Weeks on NYT Best Seller List: #{selected_book.weeks_on}"
-  #         puts "Publisher: #{selected_book.publisher}"
-  #     # elsif input = 'exit'
-  #     #   puts leave_selector
-  #     # else
-  #     #   puts invalid_input
-  #     #end
-  # end
+    puts "To learn more about a particular book, please enter book title:"
+    input = gets.strip.downcase
+    Book.find_by_title(input)
+          # puts ""
+          # puts "#{book.title} by #{book.author}"
+          # puts "--------------------"
+          # puts "Weeks on NYT Best Seller List: #{book.weeks_on}"
+          # puts "Publisher: #{book.publisher}"
+    #   elsif input == 'exit'
+    #     puts leave_selector
+    #   else
+    #     puts invalid_input
+    #   end
+    # end
+  end
     
   # def book_info
   
@@ -112,11 +107,6 @@ class CLI
   
   # end
 
-  # # def book_detail
-    
-  # #   #2nd level scrape info (price, overview, number of pages)
-  # # end
-  
   def leave_selector
     puts "Thank you for using NYT Selector. Goodbye!"
   

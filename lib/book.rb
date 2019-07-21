@@ -13,12 +13,25 @@ attr_accessor :title, :author, :weeks_on, :publisher, :book_link
       self.send("#{key.to_s}=", v)
   end
   
-  def find_by_title(input)
-    self.all.find {|book| book.title == input}
+  def self.hello
+    puts "Hello World"
+  end
+  
+  def self.find_by_title(data)
+    self.all.find do |book| if book.title == data
+          puts "#{book.title} by #{book.author}"
+          puts "--------------------"
+          puts "Weeks on NYT Best Seller List: #{book.weeks_on}"
+          puts "Publisher: #{book.publisher}"
+        end
+    end
+    
+    puts ""
+          
   end
  
   def find_by_author(input)
-    input = gets.strip.downcase
+    
       selected_book = self.all.find {|book| book.author == author}
   end  
   
