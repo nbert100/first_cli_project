@@ -34,13 +34,13 @@ class CLI
     case input
       when 'list'
         self.list_books
-       # self.find_info_by_title
+        self.find_info_by_title
       when 'exit'
         self.leave_selector
       when 'title'
-        Book.search_by_title
+        self.info_by_title
       when 'author'
-        Book.find_by_author
+        self.info_by_author
       else
         self.invalid_input
     end
@@ -62,26 +62,21 @@ class CLI
       end
   end
     
-    # def list_songs_by_artist
-    # puts "Please enter the name of an artist:"
-    # input = gets.strip
-    # if artist = Artist.find_by_name(input)
-    #   artist.songs.sort{ |a, b| a.name <=> b.name }.each.with_index(1) do |song, i|
-    #     puts "#{i}. #{song.name} - #{song.genre.name}"
-    #   end
-    # end
-    
-  
-  def info_by_title(input)
+  def select_book(input)
     input = gets.strip.downcase
-    #Scraper.scrape_page
-    Book.all.find do |book| if book.title == input
-    binding.pry
+    
+  end
+  
+  def book_info
+    # input = gets.strip.downcase
+    
+    # Book.all.find_all do |book| if book.title == input
+
           puts ""
-          puts "#{book.title} by #{book.author}"
+          puts "#{selected_book.title} by #{selected_book.author}"
           puts "--------------------"
-          puts "Weeks on NYT Best Seller List: #{book.weeks_on}"
-          puts "Publisher: #{book.publisher}"
+          puts "Weeks on NYT Best Seller List: #{selected_book.weeks_on}"
+          puts "Publisher: #{selected_book.publisher}"
       
         else 
        puts "I couldn't find that title. Please try again."

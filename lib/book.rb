@@ -14,11 +14,11 @@ attr_accessor :title, :author, :weeks_on, :publisher, :book_link
   end
   
   def find_by_title(input)
-      self.all.find {|book| book.title == input}
+     selected_book = self.all.find {|book| book.title == input}
   end
  
-  def find_by_author(author)
-      self.all.find {|book| book.author == author}
+  def find_by_author(input)
+      selected_book = self.all.find {|book| book.author == author}
   end  
   
   
