@@ -21,7 +21,7 @@ class Scraper
       #different path for website due to button issue
        
        attributes[:book_link] = book_list.css('.css-6mwynb').css("li")[1].css("a").attribute('href').value
-       book = Book.new(attributes)
+       Book.new(attributes)
        
       end
   end

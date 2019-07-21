@@ -3,7 +3,7 @@ require 'pry'
 class CLI
 
   def call
-    
+  Scraper.scrape_page
     puts "Welcome to the NYT Best Seller Selector!"
     puts "For a list of current best sellers, enter 'list'."
     puts "To see if your favorite book is on the list, enter 'title'."
@@ -27,11 +27,11 @@ class CLI
         
       
       end
-    Scraper.scrape_page
+  
   end
   
   def list_books
-    Scraper.scrape_page
+  
     Book.all.collect do |book| 
       
       puts ""
@@ -44,11 +44,11 @@ class CLI
   end
   
   def find_info_by_title
-    Scraper.scrape_page
+    #Scraper.scrape_page
       input = gets.strip.downcase 
       if input == book.title
         puts info_by_title(input)
-      elsif "exit"
+      elsif input == 'exit'
         puts leave_selector
       else
         puts invalid_input
@@ -67,7 +67,7 @@ class CLI
   
   def info_by_title(input)
     input = gets.strip.downcase
-    Scraper.scrape_page
+    #Scraper.scrape_page
     Book.all.find do |book| if book.title == input
     binding.pry
           puts ""
