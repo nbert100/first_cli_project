@@ -1,12 +1,12 @@
-require 'pry'
+
 
 class CLI
 
   def call
     puts "Welcome to the New York Times Best Seller Selector!"
+    puts ""
     self.call_scraper
     self.menu
-    # self.prompt_for_input
   end
   
   def call_scraper
@@ -17,6 +17,7 @@ class CLI
     puts "For a list of current best sellers, enter 'list'."
     puts "To see if your favorite book is on the list, enter 'title'."
     puts "To see if your favorite author has a book on the list, enter 'author'."
+    puts "To see detailed list of current best sellers, enter 'details'."
     puts "To exit the selector, enter 'exit'."
     
     input = gets.strip.downcase
@@ -34,6 +35,8 @@ class CLI
       when 'author'
         puts "Please enter author's name:"
         self.book_info_by_author
+      when 'details'
+        self.list_details
       else
         self.invalid_input
     end
@@ -48,7 +51,20 @@ class CLI
     end
     puts ""
     
- end
+  end
+  
+  def list_details
+    Book.all.collect do |book|
+      puts ""
+      puts "#{book.title} by #{book.author}"
+          puts "--------------------------------------"
+          puts "Weeks on NYT Best Seller List: #{book.weeks_on}"
+          puts "Publisher: #{book.publisher}"
+          puts "Link: #{book.book_link}"
+          puts ""
+    end
+  end
+
 
   def leave_selector
     puts "Thank you for using NYT Selector. Goodbye!"

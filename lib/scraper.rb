@@ -23,44 +23,4 @@ class Scraper
   end
 end      
        
-       
-       
-#         second level scrape
-       
-#       book = Book.new(attributes, more_info = nil)
-# #---- pry here works
-#           book_url = book.book_link
-#           book_detail_doc = Nokogiri::HTML(open(book_url))
-        
-#           bd_page = book_detail_doc.css('div.book-page')
-#           book_doc = bd_page.css('div#book-data.book-top-section')
-          
-#           book_doc.each do |info| 
-#             more_info = {
-#               pages: info.css('.ibc-pub-info')[0].text.strip.split(",").pop,
-#               price: info.css('span#list-price-price').text.gsub("*",""),
-#               release_date: info.css('p.ibc-pub-info')[1].text.split(": ").pop
-#             }
-#           end
-
  
-   
-# def get_page
-#     main_url = 'https://www.nytimes.com/books/best-sellers/hardcover-fiction'
-#     page = Nokogiri::HTML(open(main_url))
-#   end
-
-#   def scrape_book_index
-#     self.get_page.css('.css-12yzwg4').css('div.css-xe4cfy')
-#   end
-
-#   def get_books
-    
-#     scrape_book_index.each do |b|
-#       Book.new_from_main_page(b)
-#       binding.pry
-#     end
-#   end
-
-
-
