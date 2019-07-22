@@ -31,10 +31,10 @@ attr_accessor :title, :author, :weeks_on, :publisher, :book_link
  
   def find_by_author(input)
     
-      selected_book = self.all.find {|book| book.author == author}
+      self.all.find {|book| book.author == author}
   end  
   
-  def more_info
+  def more_info(book)
     puts "#{book.title} by #{book.author}"
           puts "--------------------"
           puts "Weeks on NYT Best Seller List: #{book.weeks_on}"

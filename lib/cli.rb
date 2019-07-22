@@ -23,22 +23,23 @@ class CLI
     case input
       when 'list'
         self.list_books
+        puts "To learn more about a particular book, please enter book title:"
+        self.book_info_by_title
+        self.exit_message
       when 'exit'
         self.leave_selector
       when 'title'
-        puts "To learn more about a particular book, please enter book title:"
-        input = gets.downcase
-        Book.find_by_title(input)
-        
+        puts "Please enter book title:"
+        self.book_info_by_title
       when 'author'
-        Book.hello
+        puts "Please enter author's name:"
+        self.book_info_by_author
       else
         self.invalid_input
     end
   end
   
   def list_books
-    
     Book.all.collect do |book| 
       
       puts ""
@@ -46,7 +47,7 @@ class CLI
       
     end
     puts ""
-    puts exit_message
+    
  end
 
   def leave_selector
@@ -63,4 +64,24 @@ class CLI
   def exit_message
     puts "To exit the selector, enter 'exit'."
   end
+  
+  def book_info_by_title
+        input = gets.downcase
+        Book.find_by_title(input)
+        if selected_book = Book.find_by_title(input)
+          Book.more_info(selected_book)
+        else
+          puts "Sorry, that title isn't listed."
+        end
+  end
+  
+  def book_info_by_author
+    input = gets.strip.downcase
+    if selected_book = Book.find_by_author(input)
+      Book.more_info(selected_book)
+    else 
+      puts "Sorry, that author isn't listed."
+    end
+  end
+  
 end
