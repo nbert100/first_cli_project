@@ -72,6 +72,8 @@ class CLI
           Book.more_info(selected_book)
         else
           puts "Sorry, that title isn't listed."
+          puts ""
+          self.menu
         end
   end
   
@@ -81,6 +83,8 @@ class CLI
       Book.more_info(selected_book)
     else 
       puts "Sorry, that author isn't listed."
+      puts ""
+      self.menu
     end
   end
   
