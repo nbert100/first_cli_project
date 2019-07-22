@@ -28,7 +28,8 @@ class CLI
       when 'title'
         puts "To learn more about a particular book, please enter book title:"
         input = gets.downcase
-        selected_book = Book.find_by_title(input)
+        Book.find_by_title(input)
+        
       when 'author'
         Book.hello
       else

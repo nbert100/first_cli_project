@@ -20,15 +20,13 @@ attr_accessor :title, :author, :weeks_on, :publisher, :book_link
   end
   
   def self.find_by_title(title)
-    self.all.find do |book| if book.title == title
+    self.all.find {|book| book.title == title}
     
-          puts "#{book.title} by #{book.author}"
-          puts "--------------------"
-          puts "Weeks on NYT Best Seller List: #{book.weeks_on}"
-          puts "Publisher: #{book.publisher}"
-        end
-    end
-          
+    
+          # puts "#{book.title} by #{book.author}"
+          # puts "--------------------"
+          # puts "Weeks on NYT Best Seller List: #{book.weeks_on}"
+          # puts "Publisher: #{book.publisher}"
   end
  
   def find_by_author(input)
@@ -36,7 +34,12 @@ attr_accessor :title, :author, :weeks_on, :publisher, :book_link
       selected_book = self.all.find {|book| book.author == author}
   end  
   
-  
+  def more_info
+    puts "#{book.title} by #{book.author}"
+          puts "--------------------"
+          puts "Weeks on NYT Best Seller List: #{book.weeks_on}"
+          puts "Publisher: #{book.publisher}"
+  end
   #   # @title = title
   #   # @author = author
   #   # @weeks_on = weeks_on
@@ -45,16 +48,16 @@ attr_accessor :title, :author, :weeks_on, :publisher, :book_link
   #   @@all << self
   # end
 
-  def self.find_by_title(input)
-    self.all.find do |book| 
-      if input == book.title
-        return book_info
+  # def self.find_by_title(input)
+  #   self.all.find do |book| 
+  #     if input == book.title
+  #       return book_info
 
-      else 
-        return "Sorry, that one didn't make the cut."
-      end
-    end
-  end
+  #     else 
+  #       return "Sorry, that one didn't make the cut."
+  #     end
+  #   end
+  # end
       
 #   def self.find_by_author(input)
 #   #returns a list of books by author
