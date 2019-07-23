@@ -5,8 +5,8 @@ class CLI
   def call
     puts "Welcome to the New York Times Best Seller Selector!"
     puts ""
-    self.call_scraper
-    self.menu
+    call_scraper
+    menu
   end
   
   def call_scraper
@@ -23,22 +23,22 @@ class CLI
     input = gets.strip.downcase
     case input
       when 'list'
-        self.list_books
+        list_books
         puts "To learn more about a particular book, please enter book title:"
-        self.book_info_by_title
-        self.exit_message
+        book_info_by_title
+        exit_message
       when 'exit'
-        self.leave_selector
+        leave_selector
       when 'title'
         puts "Please enter book title:"
-        self.book_info_by_title
+        book_info_by_title
       when 'author'
         puts "Please enter author's name:"
-        self.book_info_by_author
+        book_info_by_author
       when 'details'
-        self.list_details
+        list_details
       else
-        self.invalid_input
+        invalid_input
     end
   end
   
@@ -53,7 +53,7 @@ class CLI
     
   end
   
-  def list_details
+  def list_details(book)
     Book.all.collect do |book|
       puts ""
       puts "#{book.title} by #{book.author}"
@@ -74,7 +74,7 @@ class CLI
   def invalid_input
     puts "Invalid input. Please try again."
     puts ""
-    self.menu
+    menu
   end
   
   def exit_message
@@ -82,25 +82,26 @@ class CLI
   end
   
   def book_info_by_title
-        input = gets.downcase
-        Book.find_by_title(input)
-        if selected_book = Book.find_by_title(input)
+        input = gets.strip.upcase
+        selected_book = Book.find_by_title(input)
+        if selected_book
           Book.more_info(selected_book)
         else
           puts "Sorry, that title isn't listed."
           puts ""
-          self.menu
+          menu
         end
   end
   
   def book_info_by_author
     input = gets.strip.downcase
-    if selected_book = Book.find_by_author(input)
-      Book.more_info(selected_book)
+    selected_book = Book.find_by_author(input)
+      if selected_book
+        Book.more_info(selected_book)
     else 
       puts "Sorry, that author isn't listed."
       puts ""
-      self.menu
+      menu
     end
   end
   
