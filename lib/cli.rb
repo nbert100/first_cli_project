@@ -1,5 +1,4 @@
 
-
 class CLI
 
   def call
@@ -53,7 +52,7 @@ class CLI
     
   end
   
-  def list_details(book)
+  def list_details
     Book.all.collect do |book|
       puts ""
       puts "#{book.title} by #{book.author}"
@@ -80,8 +79,10 @@ class CLI
   def exit_message
     puts "To exit the selector, enter 'exit'."
     input = gets.strip.downcase
-    if input != "exit"
-      puts invalid_input
+    if input == "exit"
+      exit_message
+    else
+      invalid_input
     end
   end
   
@@ -109,7 +110,23 @@ class CLI
     end
   end
   
-  def menu_message
+  def inside_menu
+    puts "What would you like to do next?"
+    puts ""
+    puts "To choose another book, enter 'list'."
     puts "To go back to the main menu, enter 'menu'."
+    puts exit_message
+    
+    input = gets.strip.downcase
+    case input
+      when "list"
+        list_books
+      when "menu"
+        menu
+      when "exit"
+        leave_selector
+      else
+        invalid_input
+    end
   end
 end
