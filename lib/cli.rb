@@ -79,6 +79,10 @@ class CLI
   
   def exit_message
     puts "To exit the selector, enter 'exit'."
+    input = gets.strip.downcase
+    if input != "exit"
+      puts invalid_input
+    end
   end
   
   def book_info_by_title
@@ -105,4 +109,7 @@ class CLI
     end
   end
   
+  def menu_message
+    puts "To go back to the main menu, enter 'menu'."
+  end
 end
