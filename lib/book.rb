@@ -23,12 +23,11 @@ attr_accessor :title, :author, :weeks_on, :publisher, :book_link
   end  
   
   def self.more_info(book)
-    puts ""
-    puts "#{book.title} by #{book.author}"
-          puts "---------------------------"
+    puts "\n#{book.title} by #{book.author}".colorize(:cyan)
+          puts "--------------------------------------"
           puts "Weeks on NYT Best Seller List: #{book.weeks_on}"
           puts "Publisher: #{book.publisher}"
-          puts "For even more info: #{book.book_link}"
+          puts "For even more info: #{book.book_link}\n"
   end
   
 end

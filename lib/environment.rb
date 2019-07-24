@@ -7,5 +7,6 @@ require_relative './book'
 require 'pry'
 require 'open-uri'
 require 'nokogiri'
+require 'colorize'
 
   
