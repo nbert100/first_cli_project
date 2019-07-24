@@ -26,16 +26,20 @@ class CLI
         puts "To learn more about a particular book, please enter book title:"
         book_info_by_title
         inside_menu
+        
       when 'exit'
         leave_selector
       when 'title'
         puts "Please enter book title:"
         book_info_by_title
+        exit_message
       when 'author'
         puts "Please enter author's name:"
         book_info_by_author
+        exit_message
       when 'details'
         list_details
+        exit_message
       else
         invalid_input
     end
@@ -90,6 +94,8 @@ class CLI
         selected_book = Book.find_by_title(input)
         if selected_book
           Book.more_info(selected_book)
+        # elsif input == 'exit'
+        #   puts leave_selector
         else
           puts "Sorry, that title isn't listed."
           puts ""
@@ -109,6 +115,15 @@ class CLI
     end
   end
   
+  def exit_message
+    input = gets.strip.downcase
+    if input == 'exit'
+      leave_selector
+    else
+      invalid_input
+    end
+  end
+  
   def inside_menu
     puts ""
     puts "What would you like to do next?"
@@ -122,9 +137,9 @@ class CLI
       when 'list'
         list_books
         book_info_by_title
-        
+        exit_message
       when 'exit'
-        leave_selector
+        exit_message
       else
         invalid_input
     end
