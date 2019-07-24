@@ -36,7 +36,7 @@ class CLI
         book_info_by_author
         inside_menu
       when 'details'
-        list_details
+        list_all_details
         inside_menu
       else
         invalid_input
@@ -44,23 +44,22 @@ class CLI
   end
     
 
-  
   def list_books
     Book.all.collect do |book| 
-      
-     puts "\n#{book.title} by #{book.author}\n"
-      
+      puts "\n#{book.title} by #{book.author}\n"
     end
   end
   
-  def list_details
-    Book.all.collect do |book|
-      puts "\n#{book.title} by #{book.author}".colorize(:cyan)
+  def more_info(book)
+    puts "\n#{book.title} by #{book.author}".colorize(:cyan)
           puts "--------------------------------------"
           puts "Weeks on NYT Best Seller List: #{book.weeks_on}"
           puts "Publisher: #{book.publisher}"
-          puts "Link: #{book.book_link}\n"
-    end
+          puts "For even more info: #{book.book_link}\n"
+  end
+  
+  def list_all_details
+    Book.all.collect {|book| more_info(book)}
   end
 
   def leave_selector
@@ -79,7 +78,7 @@ class CLI
         input = gets.strip.upcase
         selected_book = Book.find_by_title(input)
         if selected_book
-          Book.more_info(selected_book)
+          more_info(selected_book)
         else
           puts "\nSorry, that title isn't listed.\n"
           menu
@@ -90,7 +89,7 @@ class CLI
     input = gets.strip.downcase
     selected_book = Book.find_by_author(input)
       if selected_book
-        Book.more_info(selected_book)
+        more_info(selected_book)
     else 
       puts "\nSorry, that author isn't listed.\n"
       menu

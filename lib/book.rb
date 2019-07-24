@@ -22,13 +22,7 @@ attr_accessor :title, :author, :weeks_on, :publisher, :book_link
       self.all.find {|book| book.author.downcase == author}
   end  
   
-  def self.more_info(book)
-    puts "\n#{book.title} by #{book.author}".colorize(:cyan)
-          puts "--------------------------------------"
-          puts "Weeks on NYT Best Seller List: #{book.weeks_on}"
-          puts "Publisher: #{book.publisher}"
-          puts "For even more info: #{book.book_link}\n"
-  end
+
   
 end
 
