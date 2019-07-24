@@ -31,18 +31,20 @@ class CLI
       when 'title'
         puts "Please enter book title:"
         book_info_by_title
-        exit_message
+        inside_menu
       when 'author'
         puts "Please enter author's name:"
         book_info_by_author
-        exit_message
+        inside_menu
       when 'details'
         list_details
-        exit_message
+        inside_menu
       else
         invalid_input
     end
   end
+    
+
   
   def list_books
     Book.all.collect do |book| 
@@ -68,7 +70,9 @@ class CLI
   end
 
   def leave_selector
+    puts ""
     puts "Thank you for using NYT Selector. Goodbye!"
+    exit!
   end
   
   def invalid_input
@@ -80,12 +84,13 @@ class CLI
   
   
   def book_info_by_title
+    
         input = gets.strip.upcase
         selected_book = Book.find_by_title(input)
         if selected_book
           Book.more_info(selected_book)
-        # elsif input == 'exit'
-        #   puts leave_selector
+        elsif input == 'exit'
+          puts leave_selector
         else
           puts "Sorry, that title isn't listed."
           puts ""
@@ -94,6 +99,7 @@ class CLI
   end
   
   def book_info_by_author
+    
     input = gets.strip.downcase
     selected_book = Book.find_by_author(input)
       if selected_book
@@ -108,11 +114,11 @@ class CLI
   def exit_message
     puts "To exit the selector, enter 'exit'."
     input = gets.strip.downcase
-    if input != 'exit'
-      invalid_input
-    else
-      leave_selector
-    end
+      if input == 'exit'
+        return leave_selector
+      else
+        invalid_input
+      end
   end
   
   def inside_menu
@@ -124,13 +130,17 @@ class CLI
     puts "To exit the selector, enter 'exit'."
     
     input = gets.strip.downcase
-    case input
-      when 'list'
+    
+      if input == 'list'
         list_books
+        puts "Please enter book title:"
         book_info_by_title
         exit_message
-      when 'exit'
-        exit_message
+      elsif input == 'menu'
+        puts ""
+        menu
+      elsif input == 'exit'
+        return exit_message
       else
         invalid_input
     end
