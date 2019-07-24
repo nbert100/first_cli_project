@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Nia Bert'"]
   spec.email         = ["'nbert14@gmail.com'"]
 
-  spec.summary       = %q{This gem is designed to give users different ways of looking at the NYT best seller list.}
-  spec.description   = %q{This gem is designed to give users different ways of looking at the NYT best seller list.}
+  spec.summary       = %q{Learn more about the books on the NYT Best Seller List.}
+  spec.description   = %q{The New York Times Best Seller Selector is a CLI, Command Line Interface, designed to give the user  more information about the books on the current Hardcover Fiction Best Seller List. The CLI scrapes data from the New York Times website to get information like book title, author, weeks on the best seller list and publisher. }
   spec.homepage      = "https://github.com/nbert100/first_cli_project"
   spec.license       = "MIT"
 

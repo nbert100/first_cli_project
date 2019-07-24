@@ -1,6 +1,6 @@
 # FirstCliProject
 
-This CLI is designed to let the user interact with the current list of New York Times Bestsellers for Hardcover Fiction. 
+The New York Times Best Seller Selector is a CLI, Command Line Interface, designed to give the user  more information about the books on the current Hardcover Fiction Best Seller List. The CLI scrapes data from the New York Times website to get information like book title, author, weeks on the best seller list and publisher. 
 
 ## Installation
 
@@ -20,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-To use this gem enter the above code then follow prompts.
+Enter the following code to run the New York Times Best Seller Selector.
+
+  $ bin/nyt_bestseller
 
 ## Development
 
