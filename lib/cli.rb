@@ -25,7 +25,7 @@ class CLI
         list_books
         puts "To learn more about a particular book, please enter book title:"
         book_info_by_title
-        exit_message
+        inside_menu
       when 'exit'
         leave_selector
       when 'title'
@@ -67,7 +67,6 @@ class CLI
 
   def leave_selector
     puts "Thank you for using NYT Selector. Goodbye!"
-  
   end
   
   def invalid_input
@@ -76,15 +75,15 @@ class CLI
     menu
   end
   
-  def exit_message
-    puts "To exit the selector, enter 'exit'."
-    input = gets.strip.downcase
-    if input == "exit"
-      exit_message
-    else
-      invalid_input
-    end
-  end
+  # def exit_message
+  #   puts "To exit the selector, enter 'exit'."
+  #   input = gets.strip.downcase
+  #   if input == "exit"
+  #     leave_selector
+  #   else
+  #     invalid_input
+  #   end
+  # end
   
   def book_info_by_title
         input = gets.strip.upcase
@@ -111,19 +110,20 @@ class CLI
   end
   
   def inside_menu
+    puts ""
     puts "What would you like to do next?"
     puts ""
     puts "To choose another book, enter 'list'."
     puts "To go back to the main menu, enter 'menu'."
-    puts exit_message
+    puts "To exit the selector, enter 'exit'."
     
     input = gets.strip.downcase
     case input
-      when "list"
+      when 'list'
         list_books
-      when "menu"
-        menu
-      when "exit"
+        book_info_by_title
+        
+      when 'exit'
         leave_selector
       else
         invalid_input
